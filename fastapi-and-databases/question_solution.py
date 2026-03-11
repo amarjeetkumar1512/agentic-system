@@ -52,5 +52,3 @@ for row in result:
     print(row)
 
 conn.close()
-
-poar = students.insert().values(name="Sita", age=20, city="Chennai")
