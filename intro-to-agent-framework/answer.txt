@@ -1,0 +1,27 @@
+# Problem Statement Answer 
+
+-> Why Frameworks Are Necessary for Building Agentic Systems
+=  Agentic AI systems perform autonomous tasks using reasoning, planning, tool usage and memory. Building them directly with LLM APIs is complex.
+   Frameworks simplify development:
+   --> multiple LLM calls
+   --> Memory management for maintaining context
+   --> Tool integration with APIs, databases, and services
+   --> Workflow management for multi-step tasks
+   --> Multi-agent coordination
+
+-> Key Characteristics of Major Frameworks
+=  LangChain - Manage LLM and tools.
+=  LangGraph - Complex workflow, multiple step, take maltiple autonomous action and scheduling.
+=  CrewAI - Buid agentic application around multiple agents work to together.
+=  google ADK - Moduler framework for developing AI agent.
+=  vercel AI SDK - Type script tool belding for AI agent.
+=  AutoGen - coordinate multiple agents.
+=  n8n - integrate AI with business tools
+
+-> How to Select the Right Framework
+=  LangChain - simple AI pipelines and RAG systems
+=  LangGraph - complex, stateful agent workflows
+=  CrewAI / AutoGen - multi-agent collaboration
+=  Google ADK - enterprise-level AI systems
+=  Vercel AI SDK - AI in web applications
+=  N8N - automation and integration with business tools 
