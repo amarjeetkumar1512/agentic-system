@@ -4,26 +4,15 @@ import chromadb
 from google import genai
 from sentence_transformers import SentenceTransformer
 
-# =========================
-# GEMINI CLIENT
-# =========================
-
 client = genai.Client(
     api_key=os.getenv("GOOGLE_API_KEY")
 )
-
-# =========================
-# LOCAL EMBEDDING MODEL
-# =========================
 
 embedding_model = SentenceTransformer(
     "all-MiniLM-L6-v2",
     device="cpu"
 )
 
-# =========================
-# CHROMADB SETUP
-# =========================
 
 chroma_client = chromadb.PersistentClient(
     path="./chroma_db"
@@ -33,9 +22,6 @@ collection = chroma_client.get_or_create_collection(
     name="campus_policies"
 )
 
-# =========================
-# READ PDF
-# =========================
 
 def read_pdf_text(pdf_path):
 
@@ -51,10 +37,6 @@ def read_pdf_text(pdf_path):
             text += page_text + "\n"
 
     return text
-
-# =========================
-# CHUNK TEXT
-# =========================
 
 def chunk_text(text, chunk_size=200, overlap=40):
 
@@ -76,19 +58,11 @@ def chunk_text(text, chunk_size=200, overlap=40):
 
     return chunks
 
-# =========================
-# GENERATE EMBEDDING
-# =========================
-
 def generate_embedding(text):
 
     embedding = embedding_model.encode(text)
 
     return embedding.tolist()
-
-# =========================
-# LOAD DOCUMENTS
-# =========================
 
 def load_documents():
 
@@ -129,10 +103,6 @@ def load_documents():
 
     print("\nDocuments indexed successfully!")
 
-# =========================
-# RETRIEVE CHUNKS
-# =========================
-
 def retrieve_chunks(query, top_k=3):
 
     query_embedding = generate_embedding(query)
@@ -143,10 +113,6 @@ def retrieve_chunks(query, top_k=3):
     )
 
     return results
-
-# =========================
-# ASK GEMINI
-# =========================
 
 def ask_llm(question, retrieved_chunks):
 
@@ -174,10 +140,6 @@ QUESTION:
 
     return response.text
 
-# =========================
-# ANSWER QUESTION
-# =========================
-
 def answer_question(question):
 
     results = retrieve_chunks(question)
@@ -194,10 +156,6 @@ def answer_question(question):
     answer = ask_llm(question, retrieved_docs)
 
     return answer
-
-# =========================
-# MAIN
-# =========================
 
 if __name__ == "__main__":
 
