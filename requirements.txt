@@ -1,5 +1,0 @@
-google-genai
-chromadb
-pypdf
-python-dotenv
-sentence-transformers
